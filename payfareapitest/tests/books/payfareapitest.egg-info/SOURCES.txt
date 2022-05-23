@@ -1,0 +1,6 @@
+payfareapitest.egg-info/PKG-INFO
+payfareapitest.egg-info/SOURCES.txt
+payfareapitest.egg-info/dependency_links.txt
+payfareapitest.egg-info/not-zip-safe
+payfareapitest.egg-info/requires.txt
+payfareapitest.egg-info/top_level.txt

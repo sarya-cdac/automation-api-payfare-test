@@ -1,0 +1,5 @@
+requests~=2.27.1
+setuptools~=60.2.0
+mysql~=0.0.3
+mysql-connector-python~=8.0.29
+pytest~=7.1.2
