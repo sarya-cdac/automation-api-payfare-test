@@ -28,3 +28,4 @@ class DBUtility(object):
         row = cursor.fetchone()
         conn.close()
         return row
+
