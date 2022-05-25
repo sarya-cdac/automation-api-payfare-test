@@ -4,6 +4,7 @@ import logging as logger
 from payfareapitest.src.utilities.requestutilities import RequestUtility
 from payfareapitest.src.utilities.dbUtility import DBUtility
 from payfareapitest.src.dao.books_dao import booksDAO
+from payfareapitest.src.resources.apiresources import *
 
 
 class BooksHelper(object):
@@ -12,24 +13,25 @@ class BooksHelper(object):
         self.request_utility = RequestUtility()
         self.db_utility = DBUtility()
         self.body = None
+        self.addbookendpoint = ApiResources.addBook
+        self.db_query = ApiResources.query
 
     def create_book(self):
-        payload_template = os.path.join(self.cur_file_dir, '..', 'data', 'payload.json')
+        # payload_template = os.path.join(self.cur_file_dir, '..', 'data', 'payload.json')
         file_name = "C:\\Users\\Shivani Arya\\PycharmProjects\\AutomationPytest\\payfareapitest\\src\\data\\payload" \
                     ".json "
         with open(file_name) as f:
             payload = json.load(f)
-        create_book_json = self.request_utility.post(endpoint='Library/Addbook.php', payload=payload,
+        create_book_json = self.request_utility.post(endpoint=self.addbookendpoint, payload=payload,
                                                      expected_status_code=200)
         return create_book_json
 
     def create_book_from_db_query(self):
-
         # query_to_get_book_detail = books_dao_obj.get_books_details()
-        sql = 'select * from books'
+
         logger.debug("This is a post request for pytest for DB")
-        create_book_json_db = self.request_utility.post(endpoint='Library/Addbook.php',
-                                                        payload=self.create_payload(sql),
+        create_book_json_db = self.request_utility.post(endpoint=self.addbookendpoint,
+                                                        payload=self.create_payload(self.db_query),
                                                         expected_status_code=200)
         return create_book_json_db
 

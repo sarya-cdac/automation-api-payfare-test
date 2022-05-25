@@ -3,6 +3,7 @@ import logging as logger
 import requests
 import os
 import json
+from payfareapitest.src.resources.apiresources import *
 
 
 class RequestUtility(object):
@@ -14,6 +15,7 @@ class RequestUtility(object):
         self.url = None
         self.env = os.environ.get('ENV', 'test')
         self.base_url = API_HOSTS[self.env]
+        self.get_bookend_point = ApiResources.getBook
 
     def get(self, endpoint, params, headers=None, expected_status_code=200):
         self.url = self.base_url + endpoint
@@ -41,6 +43,3 @@ class RequestUtility(object):
         assert self.status_code == self.expected_status_code, "Verified"
         logger.debug(f"POST API response: {self.rs_json}")
         return self.rs_json
-
-
-

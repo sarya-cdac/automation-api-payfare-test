@@ -7,6 +7,7 @@ from payfareapitest.src.dao.books_dao import booksDAO
 
 
 @pytest.mark.tcid31
+@pytest.mark.smoke
 def test_post_book_details_fromDB():
     logger.info("This is a post request for pytest for DB")
 
